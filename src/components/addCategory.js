@@ -1,10 +1,9 @@
 import React from 'react';
 
-const AddCategory = () => {
+const AddCategory = (props) => {
     return (
         <div>
-            <button>+</button>
-            목록 추가
+            <button onClick={props.addCategory}>+</button>목록 추가
         </div>
     );
 };

@@ -4,7 +4,7 @@ import Category from './category';
 const CategoryList = (props) => {
     return (
         <div>
-            {props.categories.map((category, i) => <Category key={i} category={category.category} />)}
+            {props.categories.map((category, i) => <Category key={i} category={category} delCategory={props.delCategory} />)}
         </div>
     );
 };

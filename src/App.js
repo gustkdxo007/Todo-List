@@ -19,7 +19,8 @@ class App extends React.Component {
           title: '잠자기',
           category: 'normal',
         }
-      ]
+      ],
+      category: ['normal','star'],
     };
   }
 
@@ -44,14 +45,29 @@ class App extends React.Component {
     })
   }
 
+  delCategory = (category) => {
+    this.setState({
+      category: [...this.state.category].filter(data => data !== category)
+    })
+  }
+
+  addCategory = () => {
+    let value = prompt('추가할 Category를 입력하세요');
+    if(value) {
+      this.setState({
+        category: [...this.state.category, value]
+      })
+    }
+  }
+
   render() {
     return (
       <div>
         <Top />
         <AddTodo addTodoClick={this.addTodoClick} />
         <TodoList todos={this.state.todos} delTodo={this.delTodo} />
-        <AddCategory />
-        <CategoryList categories={this.state.todos} />
+        <AddCategory addCategory={this.addCategory} />
+        <CategoryList categories={this.state.category} delCategory={this.delCategory} />
       </div>
     )
   }

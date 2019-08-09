@@ -4,7 +4,7 @@ const Category = (props) => {
     return (
         <div>
             {props.category}
-            <button>X</button>
+            <button onClick={props.delCategory.bind(this, props.category)}>X</button>
         </div>
     );
 };
