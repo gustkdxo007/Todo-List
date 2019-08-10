@@ -2,9 +2,11 @@ import React from 'react';
 import Todo from './todo';
 
 const TodoList = (props) => {
+    console.log(props.currCategory)
     return (
         <div>
-            {props.todos.map((todo, i) => <Todo key={i} todos={todo.title} delTodo={props.delTodo} />)}
+            {props.todos.filter(todo => todo.category === props.currCategory)
+                .map((todo, i) => <Todo key={i} todos={todo.title} done={todo.done} delTodo={props.delTodo} doneTodo={props.doneTodo} />)}
         </div>
     );
 };

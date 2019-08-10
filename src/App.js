@@ -14,29 +14,27 @@ class App extends React.Component {
         {
           title: '밥먹기',
           category: 'normal',
+          done: false,
         },
         {
           title: '잠자기',
           category: 'normal',
+          done: false,
         }
       ],
       category: ['normal','star'],
+      currentCategory: 'normal',
     };
   }
 
   addTodoClick = () => {
-    let todoTitle = document.getElementById('add-todo').value
-    if(!todoTitle) {
-      alert('할 일을 입력해주세요');
-    } else{
-      let todo = {
-        title: todoTitle,
-        category: 'normal',
-      }
-      this.setState({
-        todos: [...this.state.todos, todo]
-     })
+    let todoTitle = document.getElementById('add-todo').value;
+    let todo = {
+      title: todoTitle,
+      category: this.state.currentCategory,
+      done: false,
     }
+    !todoTitle ? alert('할 일을 입력해주세요') : this.setState({todos: [...this.state.todos, todo]})
   }
 
   delTodo = (todo) => {
@@ -60,14 +58,31 @@ class App extends React.Component {
     }
   }
 
+  doneTodo = (todo) => {
+    this.setState({
+      todos: [...this.state.todos].map(item => {
+        if(item.title === todo) {
+          item.done = !item.done;
+        }
+        return item;
+      })
+    })
+  }
+
+  handleCategory = (cate) => {
+    this.setState({
+      currentCategory: cate,
+    })
+  }
+
   render() {
     return (
       <div>
         <Top />
         <AddTodo addTodoClick={this.addTodoClick} />
-        <TodoList todos={this.state.todos} delTodo={this.delTodo} />
+        <TodoList todos={this.state.todos} delTodo={this.delTodo} doneTodo={this.doneTodo} currCategory={this.state.currentCategory}/>
         <AddCategory addCategory={this.addCategory} />
-        <CategoryList categories={this.state.category} delCategory={this.delCategory} />
+        <CategoryList categories={this.state.category} delCategory={this.delCategory} handleCategory={this.handleCategory} />
       </div>
     )
   }
