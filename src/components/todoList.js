@@ -2,7 +2,6 @@ import React from 'react';
 import Todo from './todo';
 
 const TodoList = (props) => {
-    console.log(props.currCategory)
     return (
         <div>
             {props.todos.filter(todo => todo.category === props.currCategory)

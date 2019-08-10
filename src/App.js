@@ -53,7 +53,8 @@ class App extends React.Component {
     let value = prompt('추가할 Category를 입력하세요');
     if(value) {
       this.setState({
-        category: [...this.state.category, value]
+        category: [...this.state.category, value],
+        currentCategory: value,
       })
     }
   }
@@ -79,7 +80,7 @@ class App extends React.Component {
     return (
       <div>
         <Top />
-        <AddTodo addTodoClick={this.addTodoClick} />
+        <AddTodo addTodoClick={this.addTodoClick} currCategory={this.state.currentCategory} />
         <TodoList todos={this.state.todos} delTodo={this.delTodo} doneTodo={this.doneTodo} currCategory={this.state.currentCategory}/>
         <AddCategory addCategory={this.addCategory} />
         <CategoryList categories={this.state.category} delCategory={this.delCategory} handleCategory={this.handleCategory} />
