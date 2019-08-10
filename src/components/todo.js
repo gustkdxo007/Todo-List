@@ -9,10 +9,10 @@ const Todo = (props) => {
   }
 
     return (
-        <div style={completeLine()}>
+        <div className='todo-todo' style={completeLine()}>
             <input type="checkbox" onClick={props.doneTodo.bind(this, props.todos)} />
             <span onClick={props.doneTodo.bind(this, props.todos)}>{props.todos}</span>
-            <button onClick={props.delTodo.bind(this, props.todos)}>취소</button>
+            <button className='btn' onClick={props.delTodo.bind(this, props.todos)}>취소</button>
         </div>
     );
 };

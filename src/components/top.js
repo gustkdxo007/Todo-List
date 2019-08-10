@@ -3,7 +3,7 @@ import React from 'react';
 const Top = () => {
   return (
         <div>
-            <h1>오늘의 할일 !</h1>
+            <h1>To do List</h1>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import AddTodo from './components/addTodo';
 import TodoList from './components/todoList';
 import CategoryList from './components/categoryList';
 import AddCategory from './components/addCategory';
+import ChangeCategory from './components/changeCategory';
 import './App.css';
 
 class App extends React.Component {
@@ -12,18 +13,13 @@ class App extends React.Component {
     this.state = {
       todos: [
         {
-          title: '밥먹기',
-          category: 'normal',
+          title: null,
+          category: null,
           done: false,
         },
-        {
-          title: '잠자기',
-          category: 'normal',
-          done: false,
-        }
       ],
-      category: ['normal','star'],
-      currentCategory: 'normal',
+      category: ['할 일'],
+      currentCategory: '할 일',
     };
   }
 
@@ -78,12 +74,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='App'>
+        <div className='top'>
         <Top />
-        <AddTodo addTodoClick={this.addTodoClick} currCategory={this.state.currentCategory} />
-        <TodoList todos={this.state.todos} delTodo={this.delTodo} doneTodo={this.doneTodo} currCategory={this.state.currentCategory}/>
-        <AddCategory addCategory={this.addCategory} />
-        <CategoryList categories={this.state.category} delCategory={this.delCategory} handleCategory={this.handleCategory} />
+        </div>
+        <span className='category'>
+          <AddCategory addCategory={this.addCategory} />
+          <CategoryList categories={this.state.category} delCategory={this.delCategory} handleCategory={this.handleCategory} />
+        </span>
+        <span className='todolist'>
+          <AddTodo addTodoClick={this.addTodoClick} currCategory={this.state.currentCategory} />
+          <TodoList todos={this.state.todos} delTodo={this.delTodo} doneTodo={this.doneTodo} currCategory={this.state.currentCategory}/>
+        </span>
+        <ChangeCategory />
       </div>
     )
   }

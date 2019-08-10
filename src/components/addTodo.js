@@ -26,10 +26,13 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>{this.props.currCategory}</h3>
-        <input id='add-todo' type='text' value={this.state.value} onChange={this.onChange} onKeyPress={this.onEnter} placeholder='할 일을 입력하세요' ></input>
-        <button onClick={this.onClick}>추가</button>
+      <div className='addTodo-addTodo'>
+        <h3 className='addTodo-cate'>{this.props.currCategory}</h3>
+        <div className='addTodo-input'>
+          <input id='add-todo' type='text' value={this.state.value} onChange={this.onChange} onKeyPress={this.onEnter} placeholder='할 일을 입력하세요' ></input>
+          <button className='addTodo-btn' onClick={this.onClick}>추가</button>
+        </div>
+        
      </div>
     )
   }
